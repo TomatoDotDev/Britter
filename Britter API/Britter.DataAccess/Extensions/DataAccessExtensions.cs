@@ -1,6 +1,6 @@
 ﻿using Britter.DataAccess.Context;
+using Britter.DataAccess.Models;
 using Britter.DataAccess.Seeder;
-using Britter.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

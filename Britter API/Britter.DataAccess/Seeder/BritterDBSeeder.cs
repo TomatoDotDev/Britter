@@ -1,18 +1,24 @@
-﻿using Britter.Models;
+﻿using Britter.DataAccess.Models;
 using Britter.Models.Enums;
 using Microsoft.AspNetCore.Identity;
 
 namespace Britter.DataAccess.Seeder
 {
+    /// <inheritdoc cref="IBritterDBSeeder"/>/>
     public class BritterDBSeeder : IBritterDBSeeder
     {
         private readonly IPasswordHasher<BritterUser> _hasher;
 
+        /// <summary>
+        /// Constructor for <see cref="BritterDBSeeder"/>.
+        /// </summary>
+        /// <param name="hasher">Password hasher service.</param>
         public BritterDBSeeder(IPasswordHasher<BritterUser> hasher)
         {
             _hasher = hasher;
         }
 
+        /// <inheritdoc />
         public IEnumerable<BritterUser> SeedUsers()
         {
             return

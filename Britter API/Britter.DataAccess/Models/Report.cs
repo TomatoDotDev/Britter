@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Britter.Models
+namespace Britter.DataAccess.Models
 {
     /// <summary>
     /// A report record.

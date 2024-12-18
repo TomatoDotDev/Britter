@@ -1,7 +1,7 @@
 using Scalar.AspNetCore;
 using Britter.DataAccess.Extensions;
 using Microsoft.AspNetCore.Identity;
-using Britter.Models;
+using Britter.DataAccess.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

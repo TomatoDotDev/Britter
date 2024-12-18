@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Britter.Models
+namespace Britter.DataAccess.Models
 {
     /// <summary>
     /// Post class.
@@ -23,7 +23,7 @@ namespace Britter.Models
         /// The ID of the parent post. Can be null.
         /// </summary>
         public Guid? ParentPostId { get; set; }
-        
+
         /// <summary>
         /// The content of the post.
         /// </summary>

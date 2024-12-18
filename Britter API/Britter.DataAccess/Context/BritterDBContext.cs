@@ -1,5 +1,5 @@
-﻿using Britter.DataAccess.Seeder;
-using Britter.Models;
+﻿using Britter.DataAccess.Models;
+using Britter.DataAccess.Seeder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

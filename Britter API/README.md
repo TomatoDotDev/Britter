@@ -8,8 +8,7 @@ The solution comprises of a .NET web API that interfaces to a SQLite database fo
 Projects are arranged as so:
 
 1. Britter.API - .NET web API using MVC approach
-2. Britter.DataAccess - Data and Access layer utilising Entity Framework Core.
-3. Britter.Models - Internal models used within the codebase, particularly for DB schema definition.
+2. Britter.DataAccess - Data and Access layer utilising Entity Framework Core, along with internal db models.
 4. Britter.DTOs - Data Transfer Object definitions, those that are consumed and returned by the web API.
 5. *.UnitTests - Unit test projects using xunit.
 

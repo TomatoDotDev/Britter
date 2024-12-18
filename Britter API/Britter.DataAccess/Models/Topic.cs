@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Britter.Models
+namespace Britter.DataAccess.Models
 {
     /// <summary>
     /// Discussion Topic record.

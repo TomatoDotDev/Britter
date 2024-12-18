@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Britter.Models
+namespace Britter.DataAccess.Models
 {
     /// <summary>
-    /// User account record.
+    /// User account record. Inherits from <see cref="IdentityUser"/>
     /// </summary>
     public class BritterUser : IdentityUser<Guid>
     {

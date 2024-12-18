@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Britter.Models
+namespace Britter.DataAccess.Models
 {
     /// <summary>
     /// A vote record.
