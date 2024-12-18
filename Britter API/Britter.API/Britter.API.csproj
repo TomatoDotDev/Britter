@@ -14,4 +14,12 @@
     <PackageReference Include="Scalar.AspNetCore" Version="1.2.56" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Britter.DataAccess\Britter.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
