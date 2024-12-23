@@ -70,16 +70,16 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// List of votes associated with this post.
         /// </summary>
-        public ICollection<Vote> Votes { get; set; }
+        public ICollection<Vote> Votes { get; set; } = new List<Vote>();
 
         /// <summary>
         /// List of posts associated with this post.
         /// </summary>
-        public ICollection<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; } = new List<Post>();
 
         /// <summary>
         /// List of reports associated with this post.
         /// </summary>
-        public ICollection<Report> Reports { get; set; }
+        public ICollection<Report> Reports { get; set; } = new List<Report>();
     }
 }

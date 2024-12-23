@@ -1,5 +1,6 @@
 ﻿using Britter.DataAccess.Context;
 using Britter.DataAccess.Models;
+using Britter.DataAccess.Repositories;
 using Britter.DataAccess.Seeder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,15 +17,14 @@ namespace Britter.DataAccess.Extensions
         /// <returns>An updated service collection.</returns>
         public static IServiceCollection AddDatabaseServices(this IServiceCollection services)
         {
-            services.AddSingleton(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
-            services.AddTransient<IBritterDBSeeder, BritterDBSeeder>();
+            //services.AddSingleton(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
             services.AddDbContext<BritterDBContext>(options => 
             {
                 // TODO: change me to new provider.
-                options.UseInMemoryDatabase("AppDB");
+                options.UseSqlite("Data Source=database.db");
             });
-            services.AddIdentityCore<BritterUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<BritterDBContext>();
+
+            services.AddScoped<IBritterUserRepo, BritterUserRepo>();
 
             return services;
         }

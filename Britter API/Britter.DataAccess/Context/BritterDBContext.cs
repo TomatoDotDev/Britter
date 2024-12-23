@@ -1,5 +1,4 @@
 ﻿using Britter.DataAccess.Models;
-using Britter.DataAccess.Seeder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +21,9 @@ namespace Britter.DataAccess.Context
         public BritterDBContext(DbContextOptions<BritterDBContext> options)
             : base(options)
         {
+            // TODO: Remove this when move to migrations.
             Database.EnsureCreated();
+
         }
 
         /// <summary>
@@ -44,5 +45,10 @@ namespace Britter.DataAccess.Context
         /// Database set for all vote records.
         /// </summary>
         public DbSet<Vote> Votes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

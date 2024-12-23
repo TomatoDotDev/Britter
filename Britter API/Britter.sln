@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{DFD165D6-3
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Britter.DTO", "Britter.DTO\Britter.DTO.csproj", "{EF179114-1B45-47FD-8EE2-166C79778162}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{3B33AFC5-DFC5-4820-8536-59EC548B41BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B33AFC5-DFC5-4820-8536-59EC548B41BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B33AFC5-DFC5-4820-8536-59EC548B41BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF179114-1B45-47FD-8EE2-166C79778162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF179114-1B45-47FD-8EE2-166C79778162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF179114-1B45-47FD-8EE2-166C79778162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF179114-1B45-47FD-8EE2-166C79778162}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
