@@ -12,7 +12,7 @@ namespace Britter.API.Extensions
         public async Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context, CancellationToken cancellationToken)
         {
             var authenticationSchemes = await authenticationSchemeProvider.GetAllSchemesAsync();
-            if (authenticationSchemes.Any(authScheme => authScheme.Name == "Bearer"))
+            if (!authenticationSchemes.Any(authScheme => authScheme.Name == "Bearer"))
             {
                 var requirements = new Dictionary<string, OpenApiSecurityScheme>
                 {

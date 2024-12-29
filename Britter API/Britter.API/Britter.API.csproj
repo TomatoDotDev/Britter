@@ -15,7 +15,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="Scalar.AspNetCore" Version="1.2.70" />
+    <PackageReference Include="NSwag.Generation.AspNetCore" Version="14.2.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="1.2.72" />
   </ItemGroup>
 
   <ItemGroup>

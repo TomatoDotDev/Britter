@@ -30,7 +30,7 @@ namespace Britter.API.Controllers
         /// <param name="query">The search query.</param>
         /// <returns>A list of users matching search query.</returns>
         [HttpGet]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult<BritterUserResponseDTO>> GetUsers([FromQuery]BritterUserSearchQueryDTO query)
         {
             var results = new List<BritterUserResponseDTO>();
@@ -57,7 +57,7 @@ namespace Britter.API.Controllers
         /// <param name="isLocked">Whether to lock or unlock the account.</param>
         /// <returns>A status code indicating the result of the operation.</returns>
         [HttpPut("ModifyLockStatus")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> ChangeUserLockStatus([FromBody]string userId, [FromQuery]bool isLocked)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -84,7 +84,7 @@ namespace Britter.API.Controllers
         /// <param name="userId">The user id.</param>
         /// <returns>A status code indicating the result of the operation.</returns>
         [HttpDelete("Delete")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DeleteUser([FromBody]Guid userId)
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());

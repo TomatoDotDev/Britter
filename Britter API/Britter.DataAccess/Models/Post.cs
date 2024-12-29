@@ -53,33 +53,33 @@ namespace Britter.DataAccess.Models
         /// The topic this post is under.
         /// </summary>
         [ForeignKey(nameof(TopicId))]
-        public Topic Topic { get; set; }
+        public virtual Topic Topic { get; set; }
 
         /// <summary>
         /// The user this post was authored by.
         /// </summary>
         [ForeignKey(nameof(AuthorId))]
-        public BritterUser User { get; set; }
+        public virtual BritterUser User { get; set; }
 
         /// <summary>
         /// The parent of this post.
         /// </summary>
         [ForeignKey(nameof(ParentPostId))]
-        public Post? ParentPost { get; set; }
+        public virtual Post? ParentPost { get; set; }
 
         /// <summary>
         /// List of votes associated with this post.
         /// </summary>
-        public ICollection<Vote> Votes { get; set; } = new List<Vote>();
+        public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
 
         /// <summary>
         /// List of posts associated with this post.
         /// </summary>
-        public ICollection<Post> Posts { get; set; } = new List<Post>();
+        public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
         /// <summary>
         /// List of reports associated with this post.
         /// </summary>
-        public ICollection<Report> Reports { get; set; } = new List<Report>();
+        public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
     }
 }

@@ -10,21 +10,21 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// Topics created by user.
         /// </summary>
-        public ICollection<Topic> Topics { get; set; } = new List<Topic>();
+        public virtual ICollection<Topic> Topics { get; set; } = new List<Topic>();
 
         /// <summary>
         /// Posts created by user.
         /// </summary>
-        public ICollection<Post> Posts { get; set; } = new List<Post>();
+        public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
         /// <summary>
         /// All votes made by user.
         /// </summary>
-        public ICollection<Vote> Votes { get; set; } = new List<Vote>();
+        public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
 
         /// <summary>
         /// All reports made by user.
         /// </summary>
-        public ICollection<Report> Reports { get; set; } = new List<Report>();
+        public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
     }
 }

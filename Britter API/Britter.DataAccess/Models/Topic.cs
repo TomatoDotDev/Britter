@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Britter.DataAccess.Models
 {
@@ -24,9 +25,15 @@ namespace Britter.DataAccess.Models
         public string Description { get; set; }
 
         /// <summary>
+        /// The author's ID.
+        /// </summary>
+        public Guid AuthorId { get; set; }
+
+        /// <summary>
         /// The user who authored the topic.
         /// </summary>
-        public BritterUser Author { get; set; }
+        [ForeignKey(nameof(AuthorId))]
+        public virtual BritterUser Author { get; set; }
 
         /// <summary>
         /// The date which the topic was created at.
@@ -41,16 +48,16 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// The votes associated with this topic.
         /// </summary>
-        public ICollection<Vote> Votes { get; set; } = new List<Vote>();
+        public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
 
         /// <summary>
         /// The posts associated with this topic.
         /// </summary>
-        public ICollection<Post> Posts { get; set; } = new List<Post>();
+        public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 
         /// <summary>
         /// Reports associated with the topic.
         /// </summary>
-        public ICollection<Report> Reports { get; set; } = new List<Report>();
+        public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
     }
 }

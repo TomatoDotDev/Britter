@@ -26,7 +26,7 @@ Ensuring you are running the project on Visual Studio 2022, to run the solution,
 1. Select `Build` from the navigation menu and select `Clean solution`.
 1. Select `Build` from the navigation menu and select `Build solution` or `Ctrl+Shift+B`.
 1. Press `F5` to start debugging.
-1. To view the API documentation, navigate to either `https://localhost:7013/scalar/v1` or `http://localhost:5297/scalar/v1`.
+1. To view the API development client, navigate to either `https://localhost:7013/scalar/v1` or `http://localhost:5297/scalar/v1`.
 
 ## Viewing the API definition
 Providing you have built and run the solution as above, upon navigating to the aforementioned URIs, should be presented with a UI frontend courtesy of Scalar.

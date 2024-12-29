@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Britter.DataAccess.Context;
 using Britter.DataAccess.Models;
 using Britter.API.Extensions;
+using Britter.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +19,13 @@ builder.Services.AddIdentityCore<BritterUser>(options =>
 }).AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<BritterDBContext>()
                 .AddApiEndpoints();
+builder.Services.AddScoped<IUserUtilityService, UserUtilityService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi(options => 
-{ 
-    options.AddDocumentTransformer<BearerSecuritySchemeTransformer>(); 
+builder.Services.AddOpenApi(options =>
+{
+    options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
 });
 
 builder.Host.ConfigureLogging(logging =>
@@ -49,14 +51,20 @@ if (app.Environment.IsDevelopment())
         options.WithTitle("Britter API")
         .WithTheme(ScalarTheme.DeepSpace)
         .WithDefaultHttpClient(ScalarTarget.JavaScript, ScalarClient.Fetch)
-        .WithForceThemeMode(ThemeMode.Dark);
+        .WithForceThemeMode(ThemeMode.Dark)
+        .WithPreferredScheme("Bearer")
+        .WithHttpBearerAuthentication(options =>
+        {
+            options.Token = "test-bearer-token";
+        }); ;
     });
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 
 app.MapControllers();
 app.MapIdentityApi<BritterUser>();
