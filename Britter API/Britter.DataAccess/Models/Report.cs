@@ -44,12 +44,12 @@ namespace Britter.DataAccess.Models
         /// The related post.
         /// </summary>
         [ForeignKey(nameof(PostId))]
-        public Post Post { get; set; }
+        public virtual Post Post { get; set; }
 
         /// <summary>
         /// The author of the post.
         /// </summary>
         [ForeignKey(nameof(ReportedById))]
-        public BritterUser Reporter { get; set; }
+        public virtual BritterUser Reporter { get; set; }
     }
 }

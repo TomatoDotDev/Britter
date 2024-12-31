@@ -17,14 +17,14 @@ namespace Britter.DataAccess.Extensions
         /// <returns>An updated service collection.</returns>
         public static IServiceCollection AddDatabaseServices(this IServiceCollection services)
         {
-            //services.AddSingleton(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
             services.AddDbContext<BritterDBContext>(options => 
             {
-                // TODO: change me to new provider.
+                options.UseLazyLoadingProxies();
                 options.UseSqlite("Data Source=database.db");
             });
 
             services.AddScoped<IBritterUserRepo, BritterUserRepo>();
+            services.AddScoped<ITopicRepo, TopicRepo>();
 
             return services;
         }

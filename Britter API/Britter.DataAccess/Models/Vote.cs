@@ -34,18 +34,18 @@ namespace Britter.DataAccess.Models
         /// The user who made the vote.
         /// </summary>
         [ForeignKey(nameof(UserId))]
-        public BritterUser User { get; set; }
+        public virtual BritterUser User { get; set; }
 
         /// <summary>
         /// The topic which the vote relates to. can be null.
         /// </summary>
         [ForeignKey(nameof(PostOrTopicId))]
-        public Topic? Topic { get; set; }
+        public virtual Topic? Topic { get; set; }
 
         /// <summary>
         /// The post which the vote relates to. can be null.
         /// </summary>
         [ForeignKey(nameof(PostOrTopicId))]
-        public Post? Post { get; set; }
+        public virtual Post? Post { get; set; }
     }
 }
