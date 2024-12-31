@@ -12,11 +12,6 @@ namespace Britter.DTO.Request
     public class TopicCreateDTO
     {
         /// <summary>
-        /// Topic ID.
-        /// </summary>
-        public Guid? Id { get; set; }
-
-        /// <summary>
         /// Topic Title.
         /// </summary>
         public string Title { get; set; }

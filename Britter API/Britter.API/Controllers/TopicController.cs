@@ -3,11 +3,8 @@ using Britter.DataAccess.Models;
 using Britter.DataAccess.Repositories;
 using Britter.DTO.Request;
 using Britter.DTO.Response;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing.Constraints;
-using Microsoft.Net.Http.Headers;
 
 namespace Britter.API.Controllers
 {
@@ -81,11 +78,11 @@ namespace Britter.API.Controllers
         /// <returns></returns>
         [HttpPut("Edit")]
         [Authorize]
-        public async Task<ActionResult> UpdateTopic(TopicCreateDTO topicRequest)
+        public async Task<ActionResult> UpdateTopic(Guid id, TopicCreateDTO topicRequest)
         {
             var topic = await _repo.GetTopicAsync(new()
             {
-                Id = topicRequest.Id.ToString()
+                Id = id
             });
 
             if (!topic.Any())
@@ -119,7 +116,7 @@ namespace Britter.API.Controllers
         {
             var topic = await _repo.GetTopicAsync(new()
             {
-                Id = id.ToString()
+                Id = id
             });
             if (!topic.Any())
             {

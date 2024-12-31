@@ -14,7 +14,7 @@ namespace Britter.DTO.Request
         /// <summary>
         /// Topic ID.
         /// </summary>
-        public string Id { get; set; } = string.Empty;
+        public Guid? Id { get; set; }
 
         /// <summary>
         /// The topic title.
