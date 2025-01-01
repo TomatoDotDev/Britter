@@ -38,16 +38,6 @@ namespace Britter.DTO.Response
         public bool IsEdited { get; set; }
 
         /// <summary>
-        /// The number of upvotes.
-        /// </summary>
-        public int Upvotes { get; set; }
-
-        /// <summary>
-        /// The number of downvotes.
-        /// </summary>
-        public int Downvotes { get; set; }
-
-        /// <summary>
         /// The number of posts.
         /// </summary>
         public int NumberOfPosts { get; set; }

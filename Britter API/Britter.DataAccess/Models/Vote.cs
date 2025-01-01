@@ -7,13 +7,13 @@ namespace Britter.DataAccess.Models
     /// <summary>
     /// A vote record.
     /// </summary>
-    [PrimaryKey(nameof(PostOrTopicId), nameof(UserId))]
+    [PrimaryKey(nameof(PostId), nameof(UserId))]
     public class Vote
     {
         /// <summary>
-        /// The id of the vote record.
+        /// The id of the post or topic this vote is for.
         /// </summary>
-        public Guid PostOrTopicId { get; set; }
+        public Guid PostId { get; set; }
 
         /// <summary>
         /// The id of the user who made the vote.
@@ -37,15 +37,9 @@ namespace Britter.DataAccess.Models
         public virtual BritterUser User { get; set; }
 
         /// <summary>
-        /// The topic which the vote relates to. can be null.
-        /// </summary>
-        [ForeignKey(nameof(PostOrTopicId))]
-        public virtual Topic? Topic { get; set; }
-
-        /// <summary>
         /// The post which the vote relates to. can be null.
         /// </summary>
-        [ForeignKey(nameof(PostOrTopicId))]
+        [ForeignKey(nameof(PostId))]
         public virtual Post? Post { get; set; }
     }
 }

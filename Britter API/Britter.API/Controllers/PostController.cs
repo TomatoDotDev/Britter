@@ -164,11 +164,11 @@ namespace Britter.API.Controllers
             {
                 return false;
             }
-            else if ((!await _userUtility.VerifyAdminRole(user)) || (post.AuthorId != user.Id))
+            else if ((await _userUtility.VerifyAdminRole(user)) || (post.AuthorId == user.Id))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
     }

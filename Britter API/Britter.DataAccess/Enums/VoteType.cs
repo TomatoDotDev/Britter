@@ -9,16 +9,16 @@ namespace Britter.Models.Enums
     /// <summary>
     /// Vote type.
     /// </summary>
-    public enum VoteType
+    public enum VoteType : int
     {
         /// <summary>
         /// An upvote.
         /// </summary>
-        Upvote,
+        Upvote = 1,
 
         /// <summary>
         /// A downvote.
         /// </summary>
-        Downvote,
+        Downvote = -1,
     }
 }
