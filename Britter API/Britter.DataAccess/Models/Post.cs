@@ -42,7 +42,7 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// The date the post was last edited.
         /// </summary>
-        public DateTime? LastEditedAt { get; set; }
+        public DateTime LastEditedAt { get; set; }
 
         /// <summary>
         /// Whether or not this post was marked for deletion by an admin.
@@ -75,7 +75,7 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// List of posts associated with this post.
         /// </summary>
-        public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+        public virtual ICollection<Post> Replies { get; set; } = new List<Post>();
 
         /// <summary>
         /// List of reports associated with this post.

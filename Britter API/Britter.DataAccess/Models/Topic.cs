@@ -46,11 +46,6 @@ namespace Britter.DataAccess.Models
         public DateTime? LastUpdatedAt { get; set; }
 
         /// <summary>
-        /// The votes associated with this topic.
-        /// </summary>
-        public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
-
-        /// <summary>
         /// The posts associated with this topic.
         /// </summary>
         public virtual ICollection<Post> Posts { get; set; } = new List<Post>();

@@ -4,6 +4,7 @@ using Britter.DTO.Request;
 
 namespace Britter.DataAccess.Repositories
 {
+    /// <inheritdoc cref="ITopicRepo"/>
     public class TopicRepo : ITopicRepo
     {
         private readonly BritterDBContext _context;
@@ -28,9 +29,9 @@ namespace Britter.DataAccess.Repositories
                 topics = topics.Where(t => t.Description.ToLower().Contains(query.Description.ToLower()));
             }
 
-            if (!string.IsNullOrWhiteSpace(query.Id))
+            if (query.Id.HasValue)
             {
-                topics = topics.Where(t => t.TopicId == Guid.Parse(query.Id));
+                topics = topics.Where(t => t.TopicId == query.Id);
             }
 
             return topics;

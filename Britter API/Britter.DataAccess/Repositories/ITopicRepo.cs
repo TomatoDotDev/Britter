@@ -3,6 +3,9 @@ using Britter.DTO.Request;
 
 namespace Britter.DataAccess.Repositories
 {
+    /// <summary>
+    /// Topic repository access service.
+    /// </summary>
     public interface ITopicRepo
     {
         /// <summary>

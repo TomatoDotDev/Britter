@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 namespace Britter.DTO.Request
 {
     /// <summary>
-    /// Topic creation DTO.
+    /// DTO for creating a vote.
     /// </summary>
-    public class TopicCreateDTO
+    public class VoteCreateDTO
     {
         /// <summary>
-        /// Topic Title.
+        /// The id of the post or topic to vote on.
         /// </summary>
-        public string Title { get; set; }
+        public Guid PostId { get; set; }
 
         /// <summary>
-        /// Topic Description.
+        /// The type of vote. +1 for upvote, -1 for downvote.
         /// </summary>
-        public string Description { get; set; }
+        public int VoteType { get; set; }
     }
 }
