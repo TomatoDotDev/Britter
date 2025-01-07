@@ -142,12 +142,12 @@ namespace Britter.API.Controllers
             {
                 return false;
             }
-            else if ((!await _userUtility.VerifyAdminRole(user)) || (topic.AuthorId != user.Id))
+            else if ((await _userUtility.VerifyAdminRole(user)) || (topic.AuthorId == user.Id))
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         private TopicResponseDTO ConvertToTopicResponse(Topic topic)
@@ -159,8 +159,6 @@ namespace Britter.API.Controllers
                 Description = topic.Description,
                 CreatedAt = topic.CreatedAt,
                 IsEdited = (topic.CreatedAt != topic.LastUpdatedAt),
-                Upvotes = topic.Votes.Count(v => v.Value == Models.Enums.VoteType.Upvote),
-                Downvotes = topic.Votes.Count(v => v.Value == Models.Enums.VoteType.Downvote),
                 NumberOfPosts = topic.Posts.Count,
                 Author = topic.Author.UserName!,
             };

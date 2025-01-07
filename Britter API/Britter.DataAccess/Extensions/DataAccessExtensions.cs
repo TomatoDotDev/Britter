@@ -26,6 +26,7 @@ namespace Britter.DataAccess.Extensions
             services.AddScoped<IBritterUserRepo, BritterUserRepo>();
             services.AddScoped<ITopicRepo, TopicRepo>();
             services.AddScoped<IPostRepo, PostRepo>();
+            services.AddScoped<IVoteRepo, VoteRepo>();
 
             return services;
         }
