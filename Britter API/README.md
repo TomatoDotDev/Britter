@@ -32,3 +32,11 @@ Ensuring you are running the project on Visual Studio 2022, to run the solution,
 Providing you have built and run the solution as above, upon navigating to the aforementioned URIs, should be presented with a UI frontend courtesy of Scalar.
 
 From this UI, a client library can be selected from the list and then for each endpoint, client-side code on how to call the endpoint will be provided.
+
+## Future improvements
+- Extending the login and registration system to be able to use Microsoft accounts (those used at UoH).
+- Separating the solution into microservices e.g. user management, post management, report management etc.
+- Shifting the database provider to PostgreSQL for better performance and scalability.
+- Implementing a caching layer to reduce the number of database calls.
+- Implementing a message broker for asynchronous processing of tasks.
+- Containerising the solution using Docker for easier deployment and scaling.
