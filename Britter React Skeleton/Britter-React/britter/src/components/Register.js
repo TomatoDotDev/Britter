@@ -1,28 +1,26 @@
 import React, { useState } from "react";
 import "../styles.css";
 
-const Login = ({ onLogin, onRegister }) => {
+const Register = ({ onRegister }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (username === "User" && password === "password") {
-            onLogin();
-        } else if (username === "User" && password !== "password") {
-            setError("Invalid password");
-        } else if (username !== "User" && password === "password") {
-            setError("Invalid username");
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
         } else {
-            setError("Invalid username or password");
+            // Handle registration logic here
+            onRegister();
         }
     };
 
     return (
-        <div className="login-container">
-            <form className="login-form" onSubmit={handleSubmit}>
-                <h2>Login</h2>
+        <div className="register-container">
+            <form className="register-form" onSubmit={handleSubmit}>
+                <h2>Register</h2>
                 {error && <p className="error">{error}</p>}
                 <input
                     type="text"
@@ -36,13 +34,16 @@ const Login = ({ onLogin, onRegister }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className="button-container">
-                    <button type="submit">Login</button>
-                    <button type="button" onClick={onRegister}>Register</button>
-                </div>
+                <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <button type="submit">Register</button>
             </form>
         </div>
     );
 };
 
-export default Login;
+export default Register;

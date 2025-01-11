@@ -10,16 +10,19 @@ const MainPage = ({ onLogout }) => {
             <Header onLogout={onLogout} />
             <main>
                 <Post 
-                    title="First post" 
                     username="u/Liam" 
-                    time="1 hour ago" 
+                    time="1 hour" 
                     content="This is the first post! Pretty cool right?"
                 />
                 <Post 
-                    title="Post Title 2" 
                     username="u/anotheruser" 
-                    time="30 mins ago" 
+                    time="30 mins" 
                     content="Here is another example of a post."
+                />
+                <Post
+                    username="Username from database"
+                    time="Time from database"
+                    content="Content from database"
                 />
             </main>
             <Footer />
