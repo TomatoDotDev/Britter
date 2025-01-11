@@ -87,10 +87,10 @@ namespace Britter.API.Controllers
         }
 
         /// <summary>
-        /// Edits an existing post.
+        /// Edits an existing report status.
         /// </summary>
-        /// <param name="id">The id of the post to edit.</param>
-        /// <param name="post">The post edit information.</param>
+        /// <param name="id">The id of the report to edit.</param>
+        /// <param name="status">The new report status information.</param>
         /// <returns>A status code indicating the outcome of the operation.</returns>
         [HttpPut("Edit")]
         [Authorize(Roles = "admin")]
