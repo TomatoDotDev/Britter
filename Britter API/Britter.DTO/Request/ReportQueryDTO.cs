@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Britter.DTO.Request
 {
+    /// <summary>
+    /// DTO for querying report data.
+    /// </summary>
     public class ReportQueryDTO
     {
         /// <summary>
