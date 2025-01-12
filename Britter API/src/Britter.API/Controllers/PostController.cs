@@ -146,7 +146,7 @@ namespace Britter.API.Controllers
             {
                 Id = post.PostId,
                 Content = post.Content,
-                Author = post.User.UserName,
+                Author = post.User == null ? "" : post.User.UserName,
                 CreationDate = post.CreationDate,
                 IsEdited = post.CreationDate != post.LastEditedAt,
                 IsDeleted = post.IsDeleted,

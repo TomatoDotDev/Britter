@@ -160,7 +160,7 @@ namespace Britter.API.Controllers
                 CreatedAt = topic.CreatedAt,
                 IsEdited = (topic.CreatedAt != topic.LastUpdatedAt),
                 NumberOfPosts = topic.Posts.Count,
-                Author = topic.Author.UserName!,
+                Author = topic.Author == null ? "" : topic.Author.UserName,
             };
         }
     }

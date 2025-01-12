@@ -27,6 +27,6 @@ namespace Britter.DataAccess.Repositories
         /// <param name="postOrTopicId">The post or topic id.</param>
         /// <param name="userId">The user id.</param>
         /// <returns>A post if found, else returns null.</returns>
-        Task<Vote?> GetPostAsync(Guid postOrTopicId, Guid userId);
+        Task<Vote?> GetVoteAsync(Guid postId, Guid userId);
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Britter.DataAccess.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Britter.DataAccess.Seeder
 {
+    [ExcludeFromCodeCoverage(Justification = "Seeder method")]
     public class SeedData
     {
         public static async Task SeedAdminAccountAsync(IServiceProvider serviceProvider)

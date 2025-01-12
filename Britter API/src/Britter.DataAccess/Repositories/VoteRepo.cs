@@ -1,10 +1,5 @@
 ﻿using Britter.DataAccess.Context;
 using Britter.DataAccess.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Britter.DataAccess.Repositories
 {
@@ -33,9 +28,9 @@ namespace Britter.DataAccess.Repositories
         }
 
         /// <inheritdoc />
-        public async Task<Vote?> GetPostAsync(Guid postOrTopicId, Guid userId)
+        public async Task<Vote?> GetVoteAsync(Guid postId, Guid userId)
         {
-            return await _context.Votes.FindAsync(postOrTopicId, userId);
+            return await _context.Votes.FindAsync(postId, userId);
         }
     }
 }

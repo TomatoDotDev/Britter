@@ -64,7 +64,7 @@ namespace Britter.API.Controllers
         /// <returns>A status code indicating outcome of the operation.</returns>
         [HttpDelete("Delete")]
         [Authorize]
-        public async Task<ActionResult> DeleteVoteAsync(Guid TopicOrPostId)
+        public async Task<ActionResult> DeleteVoteAsync(Guid postId)
         {
             var user = await _userUtility.GetUserFromClaimAsync(User);
             if (user == null)
@@ -72,7 +72,7 @@ namespace Britter.API.Controllers
                 return Unauthorized();
             }
 
-            var vote = await _repo.GetPostAsync(TopicOrPostId, user.Id);
+            var vote = await _repo.GetVoteAsync(postId, user.Id);
 
             if (vote == null)
             {

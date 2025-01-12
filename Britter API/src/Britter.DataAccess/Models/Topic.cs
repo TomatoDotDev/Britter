@@ -17,12 +17,12 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// The topic title.
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// The topic description.
         /// </summary>
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         /// <summary>
         /// The author's ID.

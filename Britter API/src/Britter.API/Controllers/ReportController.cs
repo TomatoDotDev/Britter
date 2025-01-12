@@ -128,7 +128,7 @@ namespace Britter.API.Controllers
                 Reason = report.Reason,
                 Status = report.Status.ToString(),
                 SubmittedAt = report.CreationDate,
-                SubmittedBy = report.Reporter.UserName!,
+                SubmittedBy = report.Reporter == null ? "" : report.Reporter.UserName,
             };
         }
     }

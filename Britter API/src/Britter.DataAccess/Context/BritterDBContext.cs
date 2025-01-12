@@ -21,9 +21,7 @@ namespace Britter.DataAccess.Context
         public BritterDBContext(DbContextOptions<BritterDBContext> options)
             : base(options)
         {
-            // TODO: Remove this when move to migrations.
             Database.EnsureCreated();
-
         }
 
         /// <summary>

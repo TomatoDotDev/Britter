@@ -27,7 +27,7 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// The content of the post.
         /// </summary>
-        public string Content { get; set; }
+        public string Content { get; set; } = string.Empty;
 
         /// <summary>
         /// The author of the post's Id.

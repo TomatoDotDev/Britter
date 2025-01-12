@@ -28,7 +28,7 @@ namespace Britter.DataAccess.Models
         /// <summary>
         /// The reason for the report.
         /// </summary>
-        public string Reason { get; set; }
+        public string Reason { get; set; } = string.Empty;
 
         /// <summary>
         /// The date the report was created.

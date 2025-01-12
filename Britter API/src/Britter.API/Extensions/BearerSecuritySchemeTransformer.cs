@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Britter.API.Extensions
 {
@@ -7,6 +8,7 @@ namespace Britter.API.Extensions
     /// Code for fixing issue with scalar authentication in dev environment. Taken from https://github.com/scalar/scalar/issues/4055.
     /// </summary>
     /// <param name="authenticationSchemeProvider"></param>
+    [ExcludeFromCodeCoverage(Justification = "Fix for scalar.")]
     internal sealed class BearerSecuritySchemeTransformer(Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider authenticationSchemeProvider) : IOpenApiDocumentTransformer
     {
         public async Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context, CancellationToken cancellationToken)
