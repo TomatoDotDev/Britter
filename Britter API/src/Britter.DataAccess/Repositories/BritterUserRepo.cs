@@ -1,7 +1,5 @@
-﻿using Britter.DataAccess.Context;
-using Britter.DataAccess.Models;
+﻿using Britter.DataAccess.Models;
 using Britter.DTO.Request;
-using Microsoft.EntityFrameworkCore;
 
 namespace Britter.DataAccess.Repositories
 {
@@ -30,10 +28,10 @@ namespace Britter.DataAccess.Repositories
                 allUsers = allUsers.Where(u => u.Id == query.Id);
             }
 
-            var pagedUsers = await allUsers
+            var pagedUsers = allUsers
                 .Skip((query.PageNumber - 1) * query.PageSize)
                 .Take(query.PageSize)
-                .ToListAsync();
+                .ToList();
 
             return pagedUsers;
         }
