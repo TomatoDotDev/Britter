@@ -400,3 +400,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /Britter API/tests/CodeQuality
+/Britter API/src/Britter.API/database.db-shm
+/Britter API/src/Britter.API/database.db-wal
+/Britter API/src/Britter.API/database.db-shm
