@@ -2,20 +2,39 @@ import React, { useState } from "react";
 import "../styles.css";
 
 const Login = ({ onLogin, onRegister }) => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (username === "User" && password === "password") {
-            onLogin();
-        } else if (username === "User" && password !== "password") {
-            setError("Invalid password");
-        } else if (username !== "User" && password === "password") {
-            setError("Invalid username");
+        if (email === "" || password === "") {
+            setError("Please fill in all fields.");
         } else {
-            setError("Invalid username or password");
+            try {
+                const response = await fetch(`${process.env.REACT_APP_API_ADDRESS}/login`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: 'Bearer test-bearer-token',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        twoFactorCode: null,
+                        twoFactorRecoveryCode: null
+                    })
+                })
+
+                if (response.ok) {
+                    onLogin();
+                } else {
+                    const errorData = await response.json();
+                    setError(errorData.message || "Login failed"); // errorData.message is the message from the server - Needs to be added to API
+                }
+            } catch (error) {
+                setError("An error occurred while trying to log in");
+            }
         }
     };
 
@@ -26,9 +45,9 @@ const Login = ({ onLogin, onRegister }) => {
                 {error && <p className="error">{error}</p>}
                 <input
                     type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                     type="password"
