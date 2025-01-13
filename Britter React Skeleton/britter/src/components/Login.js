@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 import "../styles.css";
 
 const Login = ({ onLogin, onRegister }) => {
@@ -27,6 +28,8 @@ const Login = ({ onLogin, onRegister }) => {
                 })
 
                 if (response.ok) {
+                    const data = await response.json();
+                    Cookies.set("Access-Token", data.accessToken);
                     onLogin();
                 } else {
                     const errorData = await response.json();
