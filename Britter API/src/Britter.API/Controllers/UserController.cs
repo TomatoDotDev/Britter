@@ -103,5 +103,18 @@ namespace Britter.API.Controllers
 
             return Ok();
         }
+
+        [HttpGet("IsAdmin")]
+        [Authorize]
+        public async Task<ActionResult<bool>> IsUserAdmin()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(await _userManager.IsInRoleAsync(user, "admin"));
+        }
     }
 }

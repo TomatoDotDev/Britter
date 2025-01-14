@@ -6,6 +6,7 @@ using Britter.DTO.Response;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using System.Security.Claims;
 
 namespace Britter.API.UnitTests.Controllers
 {
@@ -155,6 +156,53 @@ namespace Britter.API.UnitTests.Controllers
             // Assert
             var conflictResult = Assert.IsType<ConflictResult>(result);
             _mockUserManager.Verify(m => m.DeleteAsync(user), Times.Once);
+        }
+
+        [Fact]
+        public async Task IsUserAdmin_ReturnsTrue_WhenUserIsAdmin()
+        {
+            // Arrange
+            var user = new BritterUser { Id = Guid.NewGuid(), UserName = "adminUser" };
+            _mockUserManager.Setup(m => m.GetUserAsync(It.IsAny<ClaimsPrincipal>())).ReturnsAsync(user);
+            _mockUserManager.Setup(m => m.IsInRoleAsync(user, "admin")).ReturnsAsync(true);
+
+            // Act
+            var result = await _controller.IsUserAdmin();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnValue = Assert.IsType<bool>(okResult.Value);
+            Assert.True(returnValue);
+        }
+
+        [Fact]
+        public async Task IsUserAdmin_ReturnsFalse_WhenUserIsNotAdmin()
+        {
+            // Arrange
+            var user = new BritterUser { Id = Guid.NewGuid(), UserName = "regularUser" };
+            _mockUserManager.Setup(m => m.GetUserAsync(It.IsAny<ClaimsPrincipal>())).ReturnsAsync(user);
+            _mockUserManager.Setup(m => m.IsInRoleAsync(user, "admin")).ReturnsAsync(false);
+
+            // Act
+            var result = await _controller.IsUserAdmin();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnValue = Assert.IsType<bool>(okResult.Value);
+            Assert.False(returnValue);
+        }
+
+        [Fact]
+        public async Task IsUserAdmin_ReturnsNotFound_WhenUserIsNotFound()
+        {
+            // Arrange
+            _mockUserManager.Setup(m => m.GetUserAsync(It.IsAny<ClaimsPrincipal>())).ReturnsAsync((BritterUser?)null);
+
+            // Act
+            var result = await _controller.IsUserAdmin();
+
+            // Assert
+            var notFoundResult = Assert.IsType<NotFoundResult>(result.Result);
         }
     }
 }
