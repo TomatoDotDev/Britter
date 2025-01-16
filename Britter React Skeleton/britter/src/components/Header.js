@@ -11,7 +11,7 @@ const Header = ({ onLogout }) => {
                 headers: {
                     'Content-Type': 'text/plain;charset=UTF-8'
                 },
-                //credentials: 'include', // Ensure cookies are included
+                credentials: 'include',
                 body: ''
             });
 

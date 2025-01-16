@@ -151,9 +151,8 @@ const Topics = () => {
             <div className="content">
                 {selectedTopic ? (
                     <div className="posts-container">
-                        <h2>{selectedTopic.title}</h2>
-                        <p>{selectedTopic.description}</p>
-                        {/* Render posts associated with the selected topic */}
+                        <h2 className="post-title">{selectedTopic.title}</h2>
+                        <p className="post-description">{selectedTopic.description}</p>
                         <Post topicId={selectedTopic.id} />
                     </div>
                 ) : (
