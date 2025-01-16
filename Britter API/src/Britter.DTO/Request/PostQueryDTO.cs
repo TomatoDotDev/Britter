@@ -35,5 +35,10 @@ namespace Britter.DTO.Request
         /// The content of the post. Note that this will be checked as a partial match.
         /// </summary>
         public string Content { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Whether or not to show only top level posts. Defaults to true.
+        /// </summary>
+        public bool ShowOnlyTopLevel { get; set; } = true;
     }
 }

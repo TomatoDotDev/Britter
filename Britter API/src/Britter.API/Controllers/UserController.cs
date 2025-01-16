@@ -3,6 +3,7 @@ using Britter.DataAccess.Repositories;
 using Britter.DTO.Request;
 using Britter.DTO.Response;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace Britter.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowLocalhost3000")]
     public class UserController : Controller
     {
         private readonly IBritterUserRepo _repo;

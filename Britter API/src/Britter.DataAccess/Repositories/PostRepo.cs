@@ -47,7 +47,11 @@ namespace Britter.DataAccess.Repositories
             }
 
             // we just want top level posts here as all are nested.
-            posts = posts.Where(p => p.ParentPostId == null);
+            if (query.ShowOnlyTopLevel)
+            {
+                posts = posts.Where(p => p.ParentPostId == null);
+            }
+
             return posts;
         }
 
