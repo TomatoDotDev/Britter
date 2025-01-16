@@ -10,8 +10,8 @@ using Britter.API.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
-builder.Services.AddAuthorizationBuilder();
+builder.Services.AddAuthentication().AddCookie("Identity.Application");
+builder.Services.AddAuthorization();
 builder.Services.AddDatabaseServices();
 builder.Services.AddIdentityCore<BritterUser>(options =>
 {
@@ -26,9 +26,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost3000",
         builder => builder
-            .WithOrigins("http://localhost:3000")
+            .WithOrigins("http://localhost:3000","https://localhost:7013","http://localhost:5297")
             .AllowAnyHeader()
-            .AllowAnyMethod());
+            .AllowAnyMethod()
+            .AllowCredentials());
 });
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi(options =>
@@ -77,7 +78,7 @@ app.UseAuthorization();
 
 
 app.MapControllers();
-app.MapIdentityApi<BritterUser>();
+app.MapIdentityApi<BritterUser>().RequireCors("AllowLocalhost3000");
 app.MapIdentityApiAdditionalEndpoints<BritterUser>();
 
 app.Run();

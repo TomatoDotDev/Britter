@@ -4,6 +4,7 @@ using Britter.DataAccess.Repositories;
 using Britter.DTO.Request;
 using Britter.Models.Enums;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Britter.API.Controllers
@@ -13,6 +14,7 @@ namespace Britter.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowLocalhost3000")]
     public class VoteController : Controller
     {
         private readonly IVoteRepo _repo;

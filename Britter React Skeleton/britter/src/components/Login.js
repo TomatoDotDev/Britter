@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Cookies from "js-cookie";
 import "../styles.css";
 
 const Login = ({ onLogin, onRegister }) => {
@@ -13,11 +12,14 @@ const Login = ({ onLogin, onRegister }) => {
             setError("Please fill in all fields.");
         } else {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_ADDRESS}/login`, {
+                const url = `${ process.env.REACT_APP_API_ADDRESS }/login?useCookies=true`
+                const response = await fetch(url, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
+          
                     },
+                    credentials: 'include',
                     body: JSON.stringify({
                         email: email,
                         password: password,
@@ -27,8 +29,6 @@ const Login = ({ onLogin, onRegister }) => {
                 })
 
                 if (response.ok) {
-                    const data = await response.json();
-                    Cookies.set("Access-Token", data.accessToken);
                     onLogin();
                 } else {
                     const errorData = await response.json();
