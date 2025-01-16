@@ -4,6 +4,7 @@ using Britter.DataAccess.Models;
 using Britter.DataAccess.Repositories;
 using Britter.DTO.Request;
 using Britter.DTO.Response;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Security.Claims;
@@ -86,10 +87,10 @@ namespace Britter.API.UnitTests.Controllers
             _mockUserUtility.Setup(u => u.GetUserFromClaimAsync(It.IsAny<ClaimsPrincipal>())).ReturnsAsync(new BritterUser { Id = post.AuthorId });
             _mockUserUtility.Setup(u => u.VerifyAdminRole(It.IsAny<BritterUser>())).ReturnsAsync(false);
 
-            var postCreateDto = new PostCreateDTO { Content = "Updated content", TopicId = post.TopicId };
+            var newContent = "Updated content";
 
             // Act
-            var result = await _controller.UpdatePostAsync(postId, postCreateDto);
+            var result = await _controller.UpdatePostAsync(postId, newContent);
 
             // Assert
             var okResult = Assert.IsType<OkResult>(result);
@@ -102,10 +103,10 @@ namespace Britter.API.UnitTests.Controllers
             // Arrange
             _mockRepo.Setup(repo => repo.GetPostAsync(It.IsAny<PostQueryDTO>())).ReturnsAsync(new List<Post>());
 
-            var postCreateDto = new PostCreateDTO { Content = "Updated content", TopicId = Guid.NewGuid() };
+            var newContent = "Updated content";
 
             // Act
-            var result = await _controller.UpdatePostAsync(Guid.NewGuid(), postCreateDto);
+            var result = await _controller.UpdatePostAsync(Guid.NewGuid(), newContent);
 
             // Assert
             var notFoundResult = Assert.IsType<NotFoundResult>(result);

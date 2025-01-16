@@ -1,3 +1,38 @@
+/* Colour Sheet */
+
+:root {
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --gray-color: #ccc;
+    --light-gray-color: #f6f7f8;
+    --dark-gray-color: #1c1c1c;
+    --blue-color: #00247d;
+    --blue-hover-color: #001f5b;
+    --red-color: #cf142b;
+    --red-hover-color: #a10e22;
+    --light-blue-color: #007bff;
+    --light-blue-hover-color: #0056b3;
+    --green-color: #28a745;
+    --green-hover-color: #218838;
+    --dark-red-color: #dc3545;
+    --dark-red-hover-color: #c82333;
+    --light-green-color: #4CAF50;
+    --light-green-hover-color: #45a049;
+    --light-red-color: #f44336;
+    --light-red-hover-color: #e53935;
+    --light-blue-button-color: #2196F3;
+    --light-blue-button-hover-color: #1976D2;
+    --light-gray-border-color: #dee2e6;
+    --light-gray-bg-color: #f9f9f9;
+    --light-gray-border: #ddd;
+    --post-border-color: #e6e6e6;
+    --footer-text-color: #b1b1b1;
+    --button-submit-bg-color: #0079d3;
+    --button-default-bg-color: #d3d3d3;
+}
+
+/* Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,23 +40,38 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f6f7f8;
-    color: #1c1c1c;
+    font-family: 'Georgia', serif;
+    background-color: var(--light-gray-color);
+    color: var(--dark-gray-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Hide scrollbars */
+    border-bottom: 2px solid var(--gray-color); /* Add bottom border */
 }
 
 .header {
-    background-color: #ff4500;
+    background-color: var(--blue-color);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: var(--white-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.header .logo {
+.header div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header .title {
     font-size: 1.5em;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 .header nav {
@@ -30,8 +80,8 @@ body {
 }
 
 .header nav .logout-button {
-    background-color: #ff4500;
-    color: white;
+    background-color: var(--blue-color);
+    color: var(--white-color);
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
@@ -39,19 +89,18 @@ body {
 }
 
 .header nav .logout-button:hover {
-    background-color: #e03e00;
+    background-color: var(--blue-hover-color);
 }
 
 main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    flex: 1;
+    overflow: hidden; /* Hide scrollbars */
 }
 
 .post {
-    background: white;
-    width: 80%;
+    background: var(--white-color);
+    width: 100%;
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -60,7 +109,7 @@ main {
 
 .post .post-header {
     padding: 15px;
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid var(--post-border-color);
 }
 
 .post .post-header h3 {
@@ -69,7 +118,7 @@ main {
 
 .post .post-header p {
     font-size: 0.9em;
-    color: gray;
+    color: var(--gray-color);
 }
 
 .post .post-content {
@@ -78,16 +127,24 @@ main {
 
 .post .post-footer {
     padding: 10px 15px;
-    border-top: 1px solid #e6e6e6;
+    border-top: 1px solid var(--post-border-color);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+}
+
+.post .post-footer input {
+    padding: 8px;
+    border: 1px solid var(--gray-color);
+    border-radius: 4px;
+    margin-right: 20px;
 }
 
 .post .post-footer button {
-    background-color: #ff4500;
-    color: white;
+    background-color: var(--red-color);
+    color: var(--white-color);
     border: none;
     padding: 8px 12px;
+    margin-right: 20px;
     border-radius: 4px;
     cursor: pointer;
     position: relative;
@@ -95,7 +152,7 @@ main {
 }
 
 .post .post-footer button:hover {
-    background-color: #e03e00;
+    background-color: var(--red-hover-color);
 }
 
 .post .post-footer button:active::after {
@@ -115,85 +172,11 @@ main {
     from {
         transform: translate(-50%, -50%) scale(0);
     }
+
     to {
         transform: translate(-50%, -50%) scale(4);
         opacity: 0;
     }
-}
-
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f6f7f8;
-}
-
-.login-form {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-}
-
-.login-form h2 {
-    margin-bottom: 20px;
-}
-
-.login-form input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-}
-
-.login-form button {
-    background-color: #ff4500;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.login-form button:hover {
-    background-color: #e03e00;
-}
-
-.error {
-    color: red;
-    margin-bottom: 10px;
-    font-size: 0.9em;
-}
-
-footer {
-    margin-top: 50px;
-    text-align: center;
-    color: gray;
-    font-size: 0.9em;
-}
-
-img {
-    display: inline-block;
-}
-
-.upvote-icon,
-.downvote-icon {
-    cursor: pointer;
-    transition: filter 0.3s;
-}
-
-.upvote-icon.active {
-    filter: hue-rotate(180deg); /* Adjust this value to get the desired blue color */
-}
-
-.downvote-icon.active {
-    filter: hue-rotate(180deg); /* Adjust this value to get the desired blue color */
 }
 
 .login-container, .register-container {
@@ -201,15 +184,16 @@ img {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f6f7f8;
+    background-color: var(--light-gray-color);
 }
 
 .login-form, .register-form {
-    background: white;
+    background: var (--white-color);
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 300px;
+    text-align: center;
 }
 
 .login-form h2, .register-form h2 {
@@ -219,9 +203,63 @@ img {
 .login-form input, .register-form input {
     width: 100%;
     padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--gray-color);
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.login-form button, .register-form button {
+    background-color: var(--red-color);
+    color: var(--white-color);
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover, .register-form button:hover {
+    background-color: var(--red-hover-color);
+}
+
+.error {
+    color: var(--red-color);
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+footer {
+    background-color: var(--light-gray-color);
+    padding: 10px 20px;
+    text-align: center;
+    color: var(--footer-text-color);
+    font-size: 0.9em;
+    flex-shrink: 0;
+    border-bottom: 2px solid var(--gray-color); /* Add bottom border */
+}
+
+img {
+    display: inline-block;
+}
+
+.britter-icon {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.upvote-icon,
+.downvote-icon {
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.upvote-icon-active {
+    filter: hue-rotate(120deg); /* Adjust this value to get the desired green color */
+}
+
+.downvote-icon-active {
+    filter: hue-rotate(180deg); /* Adjust this value to get the desired blue color */
 }
 
 .button-container {
@@ -237,16 +275,362 @@ button {
 }
 
 button[type="submit"] {
-    background-color: #0079d3;
-    color: white;
+    background-color: var(--button-submit-bg-color);
+    color: var(--white-color);
 }
 
 button[type="button"] {
-    background-color: #d3d3d3;
-    color: black;
+    background-color: var(--button-default-bg-color);
+    color: var(--black-color);
+}
+
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-header {
+    background-color: var(--light-gray-bg-color);
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--light-gray-border-color);
+}
+
+.main-content {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.topics {
+    width: 100%;
+    align-content: center;
+}
+
+.topics h1 {
+    margin-bottom: 20px;
+}
+
+.create-topic {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.create-topic input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--gray-color);
+    border-radius: 4px;
+}
+
+.create-topic button {
+    padding: 10px;
+    background-color: var(--light-blue-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create-topic button:hover {
+    background-color: var(--light-blue-hover-color);
+}
+
+.topics-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px);
+}
+
+.topic {
+    background-color: var(--white-color);
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--light-gray-border-color);
+    border-radius: 4px;
+}
+
+.topic-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.topic-content p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.topic-content button {
+    margin-right: 10px;
+    padding: 10px;
+    background-color: var(--light-blue-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.topic-content button:hover {
+    background-color: var(--light-blue-hover-color);
+}
+
+.edit-topic {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-topic input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--gray-color);
+    border-radius: 4px;
+}
+
+.edit-topic button {
+    margin-right: 10px;
+    padding: 10px;
+    background-color: var(--green-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-topic button:hover {
+    background-color: var(--green-hover-color);
+}
+
+.edit-topic button:last-child {
+    background-color: var(--dark-red-color);
+}
+
+.edit-topic button:last-child:hover {
+    background-color: var(--dark-red-hover-color);
+}
+
+.topics-container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--light-gray-bg-color);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.topics-list {
+    list-style: none;
+    padding: 0;
+}
+
+.topic-item {
+    margin-bottom: 10px;
+}
+
+.topic-header {
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--white-color);
+    border: 1px solid var(--light-gray-border);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topic-header:hover {
+    background-color: var(--light-gray-color);
+}
+
+.dropdown {
+    display: flex;
+    gap: 10px;
+    padding-left: 5px;
+}
+
+.create-button {
+    background-color: var(--light-blue-button-color);
+    color: var(--white-color);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.edit-button, .delete-button, .save-button, .cancel-button {
+    background-color: var(--light-blue-button-color);
+    color: var(--white-color);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create-button:hover, .edit-button:hover, .delete-button:hover, .save-button:hover, .cancel-button:hover {
+    background-color: var(--light-blue-button-hover-color);
+}
+
+.dialog-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.dialog h2 {
+    margin-bottom: 20px;
+}
+
+.dialog input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--gray-color);
+    border-radius: 4px;
+}
+
+.dialog .save-button, .dialog .cancel-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.dialog .save-button {
+    background-color: var(--green-color);
+}
+
+.dialog .save-button:hover {
+    background-color: var(--green-hover-color);
+}
+
+.dialog .cancel-button {
+    background-color: var(--red-color);
+}
+
+.dialog .cancel-button:hover {
+    background-color: var(--red-hover-color);
 }
 
 .error {
-    color: red;
+    color: var(--red-color);
+}
+
+.posts-container {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.post-title {
+    font-size: 1.5em;
+    font-weight: bold;
     margin-bottom: 10px;
+}
+
+.post-description {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.post-content-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+} 
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+    margin-left: 20px; /* Indent comments */
+}
+
+.comment {
+    background-color: var(--light-gray-bg-color);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--light-gray-border);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-content {
+    margin-top: 5px;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.comment-footer button {
+    background-color: var(--light-blue-color);
+    color: var(--white-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-footer button:hover {
+    background-color: var(--light-blue-hover-color);
+}
+
+.comment-footer .report-button {
+    background-color: var(--red-color);
+}
+
+.comment-footer .report-button:hover {
+    background-color: var(--red-hover-color);
 }

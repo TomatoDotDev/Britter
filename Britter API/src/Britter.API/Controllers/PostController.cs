@@ -5,6 +5,7 @@ using Britter.DTO.Request;
 using Britter.DTO.Response;
 using Britter.Models.Enums;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Britter.API.Controllers
@@ -14,6 +15,7 @@ namespace Britter.API.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowLocalhost3000")]
     public class PostController : Controller
     {
         private readonly IPostRepo _repo;
@@ -30,8 +32,8 @@ namespace Britter.API.Controllers
         /// </summary>
         /// <param name="query">The query filter to use.</param>
         /// <returns>A list of posts matching the filter.</returns>
-        [HttpGet]
-        public async Task<ActionResult<List<PostResponseDTO>>> GetPostAsync([FromForm] PostQueryDTO query)
+        [HttpPost]
+        public async Task<ActionResult<List<PostResponseDTO>>> GetPostAsync(PostQueryDTO query)
         {
             var post = await _repo.GetPostAsync(query);
             var results = new List<PostResponseDTO>();
@@ -78,13 +80,13 @@ namespace Britter.API.Controllers
         /// Edits an existing post.
         /// </summary>
         /// <param name="id">The id of the post to edit.</param>
-        /// <param name="post">The post edit information.</param>
+        /// <param name="newContent">New post content.</param>
         /// <returns>A status code indicating the outcome of the operation.</returns>
         [HttpPut("Edit")]
         [Authorize]
-        public async Task<ActionResult> UpdatePostAsync(Guid id, PostCreateDTO post)
+        public async Task<ActionResult> UpdatePostAsync(Guid id, [FromBody]string newContent)
         {
-            var postRecord = await _repo.GetPostAsync(new PostQueryDTO { Id = id });
+            var postRecord = await _repo.GetPostAsync(new PostQueryDTO { Id = id, ShowOnlyTopLevel = false });
             if (!postRecord.Any())
             {
                 return NotFound();
@@ -98,7 +100,7 @@ namespace Britter.API.Controllers
                 return Unauthorized();
             }
 
-            topicToUpdate.Content = post.Content;
+            topicToUpdate.Content = newContent;
             topicToUpdate.LastEditedAt = DateTime.UtcNow;
 
             await _repo.UpdatePostAsync(topicToUpdate);
@@ -116,7 +118,8 @@ namespace Britter.API.Controllers
         {
             var posts = await _repo.GetPostAsync(new()
             {
-                Id = id
+                Id = id,
+                ShowOnlyTopLevel = false
             });
 
             if (!posts.Any())
